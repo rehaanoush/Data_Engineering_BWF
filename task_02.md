@@ -1,8 +1,9 @@
-Task 02 - Excercise🚨 
+## Task 02 - Excercise🚨 
 You will be using Rnacen (RNACentral) schema to find and explore the data available in all tables that will help you to recognise the potential tables you can query to answer the following questions
-RNA Table
 
-- Write a query to get data having length of Rna structures more than 12 with them being added after 2008
+#### Write a query to get data having length of Rna structures more than 12 with them being added after 2008
+![My Picture](Reha_Anoush_Data_engineering_BWF/images/query 1.jpeg)
+
 - How many pre computed RNA are present that are still active and got their last release update before 2022
 - How many total pre computed RNA records for snoRNA and tRNA were recorded in 2011, 2016, 2014, and 2020 
 - Can you give me the names of all databases built for RNA with minimum length other than 100, 200, 300, 400, and 15
