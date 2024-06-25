@@ -24,5 +24,5 @@
 
 ### Can you get complete 500 records of sequences for active regions and name your column as myregions in which you are getting the region name column vakue. Then tell me what different chromosomes with exon_count we have for regions including center, east and north using the name you set for your column
 
-![0000](https://github.com/rehaanoush/Reha_Anoush_Data_Engineering_BWF/assets/108594043/61c71b97-69c1-4469-9f67-fb85ddcc7517)
+![0000](https://github.com/rehaanoush/Reha_Anoush_Data_Engineering_BWF/assets/108594043/c56d1b6a-e543-4474-9ce8-899842fbf1d5)
 
