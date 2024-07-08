@@ -1,52 +1,14 @@
--- Write a query to retrieve all orders placed by customers, including customer details (name, phone),
--- order details (order ID, timestamp), and item details (product, amount). 
+-- Write a query to calculate the percentage contribution of each item's amount to its
+-- order's total amount, grouped by order_id. (Topics: Partition BY)
 
-SELECT c.name AS customer_name, c.phone AS customer_phone, o.order_id, o.order_timestamp, p.product_id, i.amount
-FROM  customer c
-JOIN orders o ON c.customer = o.customer_id
-JOIN items i ON o.order_id = i.order_id
-JOIN products p ON i.product_id = p.product_id
-ORDER BY o.order_timestamp;
- 
--- Write a query to fetch all products along with their suppliers' details (name, phone) and the corresponding category name.
+-- Write a query to rank orders by their total amount within each customer, ordering them from highest 
+-- to lowest total amount. (Topics: Window functions like RANK, PARTITION BY, and ORDER BY)
 
-SELECT p.name AS product_name, s.supplier_id, s.phone AS supplier_phone, c.name AS category_name
-FROM products p
-LEFT JOIN suppliers s ON p.supplier_id = s.supplier_id
-LEFT JOIN categories c ON p.category= c.category::text;
+-- Write a query to calculate the average price of products supplied by each supplier. Exclude suppliers
+-- who have no products in the result. (Topics: JOINS, AGGREGATE FUNCTIONS, GROUP BY)
 
- -- Write a query to retrieve details of all orders including the product name and amount ordered for each item.
+-- Write a query to count the number of products in each category. Include categories with zero products in the
+-- result set. (WINDOW FUNCTIONS, AGGREGATE FUNCTIONS, JOINS, GROUP BY)
 
-SELECT o.order_id, p.name AS product_name, i.amount
-FROM orders o
-JOIN  items i ON o.order_id = i.order_id
-JOIN products p ON i.product_id = p.product_id
-ORDER BY  o.order_id, i.amount;
- 
--- Write a query to retrieve all suppliers along with the city and country where they are located, and the products they supply.
-
-SELECT s.name AS supplier_name, s.location AS supplier_location, STRING_AGG(p.name, ', ') AS products_supplied
-FROM suppliers s
-LEFT JOIN  products p ON s.supplier_id = p.supplier_id
-GROUP BY s.name, s.location
-ORDER BY s.name;
-
- 
--- Write a query to fetch details of the most recent order (by timestamp) placed by each customer,
--- including the product details for each item in the order. [This question will use a Window Function alongside Joins]
-
-SELECT c.customer,c.name, c.phone, o.order_id, o.order_timestamp, p.product_id, p.name
-FROM  customer c
-JOIN  orders o ON c.customer = o.customer_id
-JOIN items i ON o.order_id = i.order_id
-JOIN products p ON i.product_id = p.product_id
-WHERE 
-    (o.customer_id, o.order_timestamp) IN (
-        SELECT 
-            o1.customer_id, MAX(o1.order_timestamp) AS max_order_timestamp
-        FROM orders o1
-        GROUP BY o1.customer_id
-    )
-ORDER BY c.name, o.order_timestamp DESC;
-
- 
+-- Write a query to retrieve the total amount spent by each customer, along with their name and phone number. Ensure customers with 
+-- no orders also appear with a total amount of 0. (WINDOW FUNCTIONS, AGGREGATE FUNCTIONS, JOINS, GROUP BY)
